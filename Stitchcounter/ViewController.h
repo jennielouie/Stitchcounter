@@ -7,7 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CounterBrain.h"
 
-@interface ViewController : UIViewController
+@interface ViewController : UIViewController {
+    IBOutlet UILabel *toDoCounter;
+    IBOutlet UILabel *completedCounter;
+}
+
+- (IBAction)resetPressed:(UIButton *)sender;
+- (IBAction)stepperPressed:(UIStepper *)sender;
+- (IBAction)totalRowInput:(UITextField *)sender;
 
 @end

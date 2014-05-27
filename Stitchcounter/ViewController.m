@@ -14,6 +14,26 @@
 
 @implementation ViewController
 
+/*resetPressed: set totalRows, rowsCompleted, rowsToDo all to zero.  Set percentCompleted to 0% */
+- (void)resetPressed:(UIButton *)sender {
+}
+
+/*stepperPressed: send totalRow, rowsCompleted, stepper increment to counterbrain*/
+/*update counter display, including progress bar*/
+
+- (void)stepperPressed:(UIStepper *)sender {
+    
+}
+
+/*totalRowInput: send totalRows and rowsCompleted to counterbrain*/
+ /*update display, including percentCompleted*/
+
+- (void)totalRowInput:(UITextField *)sender {
+    
+}
+
+
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
