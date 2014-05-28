@@ -22,7 +22,7 @@
 -(CounterBrain *)brain {
     if (!brain) {
         brain = [[CounterBrain alloc] init];
-        brain.totalRows = 18;
+        brain.totalRows = 5;
         brain.rowsCompleted =0;
     }
     return brain;
@@ -43,9 +43,15 @@
 
 - (IBAction)stepperPressed:(UIStepper *)sender {
     _stepperValue = sender.value;
-    [_rowsCompleted setText:[NSString stringWithFormat:@"%g", _stepperValue]];
-    [self brain].rowsCompleted = _stepperValue;
-    [_rowsToDo setText:[NSString stringWithFormat:@"%g", [[self brain] calculateRowsToDo]]];
+    if(_stepperValue < [self brain].totalRows) {
+        [_rowsCompleted setText:[NSString stringWithFormat:@"%g", _stepperValue]];
+        [self brain].rowsCompleted = _stepperValue;
+        [_rowsToDo setText:[NSString stringWithFormat:@"%g", [[self brain] calculateRowsToDo]]];
+    } else {
+        [_rowsToDo setText:@"All Done!"];
+        [_rowsCompleted setText:[NSString stringWithFormat:@"%g", [self brain].totalRows]];
+        _stepper.value = [self brain].totalRows;
+    }
 }
 
 
