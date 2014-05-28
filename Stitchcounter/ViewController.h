@@ -10,12 +10,11 @@
 #import "CounterBrain.h"
 
 @interface ViewController : UIViewController {
-    IBOutlet UILabel *toDoCounter;
-    IBOutlet UILabel *completedCounter;
+
+    CounterBrain *brain;
 }
 
 - (IBAction)resetPressed:(UIButton *)sender;
-- (IBAction)stepperPressed:(UIStepper *)sender;
-- (IBAction)totalRowInput:(UITextField *)sender;
+
 
 @end

@@ -1,4 +1,4 @@
-//
+//  HEADER
 //  CounterBrain.h
 //  Stitchcounter
 //
@@ -8,19 +8,14 @@
 
 #import <Foundation/Foundation.h>
 
-@interface CounterBrain : NSObject {
-    double totalRows;
-    double rowsToDo;
-    double rowsCompleted;
-    double percentCompleted;
-}
+@interface CounterBrain : NSObject
+@property double rowsToDo;
+@property double rowsCompleted;
+@property double totalRows;
 
--(double)resetCounter;
+-(void)resetCounter;
 
-
-/*update: get totalRows, rowsCompleted and stepper increment, then call methods to calculate rowsToDo, rowsCompleted and percentCompleted*/
--(double)updateStitchcounterTotalRows:(double)totalRows
-                  CompletedSoFar:(double)rowsCompleted
-                     withStepper:(NSString *)increment;
+/*update: get totalRows, rowsCompleted and stepper increment, then call methods to calculate rowsToDo, rowsCompleted */
+-(double)calculateRowsToDo;
 
 @end

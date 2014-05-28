@@ -10,35 +10,63 @@
 
 @interface ViewController ()
 
+@property (weak, nonatomic) IBOutlet UILabel *rowsToDo;
+@property (weak, nonatomic) IBOutlet UILabel *rowsCompleted;
+@property  IBOutlet UITextField *totalRows;
+@property (weak, nonatomic) IBOutlet UIStepper *stepper;
+@property double stepperValue;
 @end
 
 @implementation ViewController
 
-/*resetPressed: set totalRows, rowsCompleted, rowsToDo all to zero.  Set percentCompleted to 0% */
-- (void)resetPressed:(UIButton *)sender {
+-(CounterBrain *)brain {
+    if (!brain) {
+        brain = [[CounterBrain alloc] init];
+        brain.totalRows = 18;
+        brain.rowsCompleted =0;
+    }
+    return brain;
 }
+
+/*resetPressed: set totalRows, rowsCompleted, rowsToDo all to zero.  */
+- (IBAction)resetPressed:(UIButton *)sender {
+    [self brain];
+    [_rowsToDo setText:[_totalRows text]];
+    [_rowsCompleted setText:@"0"];
+    [_totalRows setText:@"0"];
+    _stepper.value = 0;
+}
+
 
 /*stepperPressed: send totalRow, rowsCompleted, stepper increment to counterbrain*/
 /*update counter display, including progress bar*/
 
-- (void)stepperPressed:(UIStepper *)sender {
-    
+- (IBAction)stepperPressed:(UIStepper *)sender {
+    _stepperValue = sender.value;
+    [_rowsCompleted setText:[NSString stringWithFormat:@"%g", _stepperValue]];
+    [self brain].rowsCompleted = _stepperValue;
+    [_rowsToDo setText:[NSString stringWithFormat:@"%g", [[self brain] calculateRowsToDo]]];
 }
+
 
 /*totalRowInput: send totalRows and rowsCompleted to counterbrain*/
  /*update display, including percentCompleted*/
 
-- (void)totalRowInput:(UITextField *)sender {
-    
-}
+- (IBAction)totalRowInput:(UITextField *)sender {
+    NSString *totalText = [sender text];
+    [_totalRows setText:totalText];
 
+}
 
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+
+
 }
+
+
 
 - (void)didReceiveMemoryWarning
 {

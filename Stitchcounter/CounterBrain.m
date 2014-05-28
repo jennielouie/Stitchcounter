@@ -1,4 +1,4 @@
-//
+//  IMPLEMENTATION
 //  CounterBrain.m
 //  Stitchcounter
 //
@@ -8,36 +8,32 @@
 
 #import "CounterBrain.h"
 
+@interface CounterBrain()
+
+
+
+
+@end
+
 @implementation CounterBrain
--(double)updateStitchcounterTotalRows:(double)totalRows
-                  CompletedSoFar:(double)rowsCompleted
-                     withStepper:(NSString *)increment {
+-(void)updateStitchcounterTotalRowswithRowsCompleted{
     
 }
 
--(double)resetCounter {
+-(void)resetCounter {
     
 }
 
-/*Private methods */
 
--(double)progressRowsDone:(double)rowsCompleted
-                  ofTotal:(double)totalRows {
-    
-}
 
 /*errors if rowsCompleted = 0 and stepper = -, rowsCompleted=totalRows and stepper = +*/
 
--(double)updateRowsCompleted:(double)rowsCompleted
-                 withStepper:(NSString *)increment {
-    
-}
 
 
 /* errors if totalRows < rowsCompleted; totalRows < 0, totalRows >1000*/
 
--(double)calculateRowsToDoFromTotal:(double)totalRows
-                  withRowsCompleted:(double)rowsCompleted {
-    
+-(double)calculateRowsToDo {
+    _rowsToDo = _totalRows - _rowsCompleted;
+    return _rowsToDo;
 }
 @end
