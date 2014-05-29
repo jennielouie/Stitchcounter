@@ -9,12 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "CounterBrain.h"
 
-@interface ViewController : UIViewController <UITextFieldDelegate> {
+@interface ViewController : UIViewController <UITextFieldDelegate, UIAlertViewDelegate> {
 
     CounterBrain *brain;
 }
 
-- (IBAction)resetPressed:(UIButton *)sender;
-
-
+@property (nonatomic) CounterBrain *brain;
 @end

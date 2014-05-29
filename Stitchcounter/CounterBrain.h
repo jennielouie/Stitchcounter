@@ -13,6 +13,9 @@
 @property double rowsCompleted;
 @property double totalRows;
 
+//designated initializer
+-(CounterBrain *)initWithTotalRows:(NSString *)totalRows;
+
 -(void)resetCounter;
 
 -(double)calculateRowsToDo;

@@ -14,6 +14,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *rowsCompleted;
 @property  IBOutlet UITextField *totalRows;
 @property (weak, nonatomic) IBOutlet UIStepper *stepper;
+@property (weak, nonatomic) IBOutlet UITextField *editableRowsCompletedDisplay;
+@property (weak, nonatomic) IBOutlet UIButton *alert;
 @property double stepperValue;
 @end
 
@@ -21,9 +23,7 @@
 
 -(CounterBrain *)brain {
     if (!brain) {
-        brain = [[CounterBrain alloc] init];
-        brain.totalRows = [_totalRows.text doubleValue];
-        brain.rowsCompleted =0;
+        brain = [[CounterBrain alloc] initWithTotalRows:_totalRows.text];
     }
     return brain;
 }
@@ -35,15 +35,33 @@
     [self brain].rowsCompleted = 0;
 }
 
-
-- (IBAction)resetPressed:(UIButton *)sender {
-    [_totalRows setText:@"0"];
-    [_rowsToDo setText:@"0"];
-    [self setRowsCompletedToZero];
-    [self brain];
+- (IBAction)alertButtonPressed:(UIButton *)sender {
+    
+    UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Reset all counts to zero?"
+                                                    message:@"This cannot be undone"
+                                                   delegate:self
+                                            cancelButtonTitle:@"No, keep values"
+                                            otherButtonTitles: @"Yes, reset",nil];
+    [self.alert setTitle:@"Reset" forState:UIControlStateNormal];
+    [alert show];
+    
     
 }
 
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    NSString *title = [alertView buttonTitleAtIndex:buttonIndex];
+    
+    if([title isEqualToString:@"Yes, reset"])
+    {
+        [_totalRows setText:@"0"];
+        [_rowsToDo setText:@"0"];
+        [self brain].totalRows = 0;
+        [self setRowsCompletedToZero];
+        [self brain];
+    }
+
+}
 
 
 - (IBAction)stepperPressed:(UIStepper *)sender {
@@ -59,6 +77,13 @@
         sender.value = [self brain].totalRows;
     }
 }
+- (IBAction)editRowsCompletedPressed:(UITextField *)sender {
+   double newRowsCompleted = [[sender text] doubleValue];
+    if (newRowsCompleted < [self brain].totalRows){
+        [self brain].rowsCompleted = newRowsCompleted;
+        [_editableRowsCompletedDisplay setText: [NSString stringWithFormat:@"%g", newRowsCompleted]];
+    }
+}
 
 
 
@@ -68,7 +93,6 @@
     if ([self brain].rowsCompleted > [totalText doubleValue]){
         [self setRowsCompletedToZero];
     }
-    [_totalRows setText:totalText];
     [self brain].totalRows = [totalText doubleValue];
     [_rowsToDo setText:[NSString stringWithFormat:@"%g", [[self brain] calculateRowsToDo]]];
     
@@ -80,6 +104,9 @@
     _totalRows.clearsOnBeginEditing = YES;
     _totalRows.returnKeyType = UIReturnKeyDone;
     _totalRows.delegate = self;
+    _editableRowsCompletedDisplay.clearsOnBeginEditing = YES;
+    _editableRowsCompletedDisplay.returnKeyType = UIReturnKeyDone;
+    _editableRowsCompletedDisplay.delegate = self;
 }
 
 -(BOOL)textFieldShouldReturn:(UITextField *)textField {

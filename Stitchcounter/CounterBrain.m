@@ -17,7 +17,14 @@
     _rowsCompleted = 0;
     _rowsToDo = 0;
     _totalRows = 5;
-    
+}
+
+
+-(CounterBrain *)initWithTotalRows:(NSString *)totalRows {
+    self = [super init];
+    _totalRows = [totalRows doubleValue];
+    _rowsCompleted = 0;
+    return self;
 }
 
 -(double)calculateRowsToDo {
