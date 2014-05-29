@@ -9,28 +9,16 @@
 #import "CounterBrain.h"
 
 @interface CounterBrain()
-
-
-
-
 @end
 
 @implementation CounterBrain
--(void)updateStitchcounterTotalRowswithRowsCompleted{
-    
-}
 
 -(void)resetCounter {
+    _rowsCompleted = 0;
+    _rowsToDo = 0;
+    _totalRows = 5;
     
 }
-
-
-
-/*errors if rowsCompleted = 0 and stepper = -, rowsCompleted=totalRows and stepper = +*/
-
-
-
-/* errors if totalRows < rowsCompleted; totalRows < 0, totalRows >1000*/
 
 -(double)calculateRowsToDo {
     _rowsToDo = _totalRows - _rowsCompleted;

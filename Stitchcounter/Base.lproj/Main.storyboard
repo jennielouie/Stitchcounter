@@ -84,15 +84,6 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="5" borderStyle="roundedRect" placeholder="18" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gwA-EP-hKQ">
-                                <rect key="frame" x="167" y="327" width="73" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <action selector="totalRowInput:" destination="vXZ-lx-hvc" eventType="editingDidEnd" id="x9U-pL-7m9"/>
-                                </connections>
-                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="tintColor" red="0.27042290769999999" green="0.15588941170000001" blue="0.75568953800000005" alpha="1" colorSpace="calibratedRGB"/>

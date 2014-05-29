@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "CounterBrain.h"
 
-@interface ViewController : UIViewController {
+@interface ViewController : UIViewController <UITextFieldDelegate> {
 
     CounterBrain *brain;
 }

@@ -15,7 +15,6 @@
 
 -(void)resetCounter;
 
-/*update: get totalRows, rowsCompleted and stepper increment, then call methods to calculate rowsToDo, rowsCompleted */
 -(double)calculateRowsToDo;
 
 @end
