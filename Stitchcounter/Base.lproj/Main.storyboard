@@ -33,13 +33,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <stepper opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" placeholderIntrinsicWidth="99" placeholderIntrinsicHeight="39" contentHorizontalAlignment="center" contentVerticalAlignment="center" autorepeat="NO" maximumValue="300" translatesAutoresizingMaskIntoConstraints="NO" id="gHg-Tc-yHJ">
-                                <rect key="frame" x="113" y="131" width="94" height="29"/>
+                                <rect key="frame" x="113" y="137" width="94" height="29"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <connections>
                                     <action selector="stepperPressed:" destination="vXZ-lx-hvc" eventType="valueChanged" id="d2k-FX-at7"/>
                                 </connections>
                             </stepper>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="18" borderStyle="roundedRect" placeholder="18" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ygi-cX-vBT">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="0" borderStyle="roundedRect" placeholder="18" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ygi-cX-vBT">
                                 <rect key="frame" x="167" y="328" width="73" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -58,6 +58,7 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZVa-7I-j6r">
                                 <rect key="frame" x="113" y="85" width="94" height="25"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                 <state key="normal" title="Reset All">
                                     <color key="titleColor" red="0.76135784646739135" green="0.20911963064501574" blue="0.29849893280901046" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>

@@ -28,58 +28,58 @@
     return brain;
 }
 
-/*resetPressed: set totalRows, rowsCompleted, rowsToDo all to zero.  */
-- (IBAction)resetPressed:(UIButton *)sender {
-    [self brain];
- 
-    [_rowsCompleted setText:@"0"];
-    [_totalRows setText:@"0"];
-    [_rowsToDo setText:[_totalRows text]];
+
+-(void)setRowsCompletedToZero {
     _stepper.value = 0;
+    [_rowsCompleted setText:@"0"];
+    [self brain].rowsCompleted = 0;
 }
 
 
-/*stepperPressed: send totalRow, rowsCompleted, stepper increment to counterbrain*/
-/*update counter display, including progress bar*/
+- (IBAction)resetPressed:(UIButton *)sender {
+    [_totalRows setText:@"0"];
+    [_rowsToDo setText:@"0"];
+    [self setRowsCompletedToZero];
+    [self brain];
+    
+}
+
+
 
 - (IBAction)stepperPressed:(UIStepper *)sender {
     _stepperValue = sender.value;
+    [_rowsCompleted setText:[NSString stringWithFormat:@"%g", _stepperValue]];
     if(_stepperValue < [self brain].totalRows) {
-        [_rowsCompleted setText:[NSString stringWithFormat:@"%g", _stepperValue]];
         [self brain].rowsCompleted = _stepperValue;
+        
         [_rowsToDo setText:[NSString stringWithFormat:@"%g", [[self brain] calculateRowsToDo]]];
     } else {
         [_rowsToDo setText:@"All Done!"];
         [_rowsCompleted setText:[NSString stringWithFormat:@"%g", [self brain].totalRows]];
-        _stepper.value = [self brain].totalRows;
+        sender.value = [self brain].totalRows;
     }
 }
 
 
-/*totalRowInput: update total Rows, recalculate rowsToDo, keep rowsCompleted/stepper unchanged UNLESS new total Rows is less than rowsCompleted, in which case latter/stepper will be reset to zero*/
 
 - (IBAction)totalRowInput:(UITextField *)sender {
     NSString *totalText = [sender text];
     
-    [_totalRows setText:totalText];
-    if ([self brain].totalRows > [totalText doubleValue]){
-        
+    if ([self brain].rowsCompleted > [totalText doubleValue]){
+        [self setRowsCompletedToZero];
     }
+    [_totalRows setText:totalText];
     [self brain].totalRows = [totalText doubleValue];
-    [self brain].rowsCompleted = _stepperValue;
     [_rowsToDo setText:[NSString stringWithFormat:@"%g", [[self brain] calculateRowsToDo]]];
     
-
 }
 
 
 - (void)viewDidLoad
 {
-   
+    _totalRows.clearsOnBeginEditing = YES;
     _totalRows.returnKeyType = UIReturnKeyDone;
     _totalRows.delegate = self;
-
-
 }
 
 -(BOOL)textFieldShouldReturn:(UITextField *)textField {
