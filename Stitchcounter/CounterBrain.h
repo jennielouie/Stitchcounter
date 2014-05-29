@@ -17,7 +17,9 @@
 -(CounterBrain *)initWithTotalRows:(NSString *)totalRows;
 
 -(void)resetCounter;
+-(void)updateWithNewTotal:(double)newTotal;
+-(void)updateWithNewRowsCompleted:(double)steppervalue;
+-(void)updateWithEditedRowsCompleted:(double)editedRowsCompleted;
 
--(double)calculateRowsToDo;
 
 @end

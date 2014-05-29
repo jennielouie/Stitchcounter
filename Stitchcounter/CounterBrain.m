@@ -31,4 +31,29 @@
     _rowsToDo = _totalRows - _rowsCompleted;
     return _rowsToDo;
 }
+
+-(void)updateWithNewTotal:(double)newTotal {
+    if (_rowsCompleted > newTotal){
+        _rowsCompleted = 0;
+    }
+    _totalRows = newTotal;
+    [self calculateRowsToDo];
+}
+
+-(void)updateWithNewRowsCompleted:(double)steppervalue {
+    if(steppervalue >= _totalRows) {
+        _rowsCompleted = _totalRows;
+    } else {
+    _rowsCompleted = steppervalue;
+    }
+    [self calculateRowsToDo];
+}
+
+
+-(void)updateWithEditedRowsCompleted:(double)editedRowsCompleted {
+    if (editedRowsCompleted < _totalRows){
+        _rowsCompleted = editedRowsCompleted;
+        [self calculateRowsToDo];
+    }
+}
 @end
