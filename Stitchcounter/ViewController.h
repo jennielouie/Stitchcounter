@@ -14,5 +14,4 @@
     CounterBrain *brain;
 }
 
-@property (nonatomic) CounterBrain *brain;
 @end

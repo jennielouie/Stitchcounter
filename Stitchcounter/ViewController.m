@@ -31,71 +31,77 @@
 
 -(void)setRowsCompletedToZero {
     _stepper.value = 0;
-    [_rowsCompleted setText:@"0"];
     [self brain].rowsCompleted = 0;
 }
+
+
+
+-(void)updateUI {
+    [_rowsToDo setText:[NSString stringWithFormat:@"%g", [self brain].rowsToDo]];
+    [_rowsCompleted setText:[NSString stringWithFormat:@"%g", [self brain].rowsCompleted]];
+    [_totalRows setText:[NSString stringWithFormat:@"%g", [self brain].totalRows]];
+    [_editableRowsCompletedDisplay setText:@"Edit"];
+
+}
+
+
+
+- (IBAction)stepperPressed:(UIStepper *)sender {
+    if(sender.value >= [self brain].totalRows) {
+        sender.value = [self brain].totalRows;
+    }
+    [self brain].rowsCompleted = sender.value;
+    [[self brain] calculateRowsToDo];
+    [self updateUI];
+}
+
+
+
+- (IBAction)totalRowInput:(UITextField *)sender {
+    double totalText = [[sender text] doubleValue];
+    
+    if ([self brain].rowsCompleted > totalText){
+        [self setRowsCompletedToZero];
+    }
+    [self brain].totalRows = totalText;
+    [[self brain] calculateRowsToDo];
+    [self updateUI];
+    
+}
+
+- (IBAction)editRowsCompletedPressed:(UITextField *)sender {
+    double newRowsCompleted = [[sender text] doubleValue];
+    if (newRowsCompleted < [self brain].totalRows){
+        [self brain].rowsCompleted = newRowsCompleted;
+        _stepper.value = newRowsCompleted;
+        [[self brain] calculateRowsToDo];
+        
+    }
+    [self updateUI];
+}
+
 
 - (IBAction)alertButtonPressed:(UIButton *)sender {
     
     UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Reset all counts to zero?"
                                                     message:@"This cannot be undone"
                                                    delegate:self
-                                            cancelButtonTitle:@"No, keep values"
-                                            otherButtonTitles: @"Yes, reset",nil];
+                                          cancelButtonTitle:@"No, keep values"
+                                          otherButtonTitles: @"Yes, reset",nil];
     [self.alert setTitle:@"Reset" forState:UIControlStateNormal];
     [alert show];
-    
-    
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     NSString *title = [alertView buttonTitleAtIndex:buttonIndex];
-    
     if([title isEqualToString:@"Yes, reset"])
     {
-        [_totalRows setText:@"0"];
-        [_rowsToDo setText:@"0"];
         [self brain].totalRows = 0;
         [self setRowsCompletedToZero];
-        [self brain];
+        [[self brain] calculateRowsToDo];
+        [self updateUI];
     }
-
-}
-
-
-- (IBAction)stepperPressed:(UIStepper *)sender {
-    _stepperValue = sender.value;
-    [_rowsCompleted setText:[NSString stringWithFormat:@"%g", _stepperValue]];
-    if(_stepperValue < [self brain].totalRows) {
-        [self brain].rowsCompleted = _stepperValue;
-        
-        [_rowsToDo setText:[NSString stringWithFormat:@"%g", [[self brain] calculateRowsToDo]]];
-    } else {
-        [_rowsToDo setText:@"All Done!"];
-        [_rowsCompleted setText:[NSString stringWithFormat:@"%g", [self brain].totalRows]];
-        sender.value = [self brain].totalRows;
-    }
-}
-- (IBAction)editRowsCompletedPressed:(UITextField *)sender {
-   double newRowsCompleted = [[sender text] doubleValue];
-    if (newRowsCompleted < [self brain].totalRows){
-        [self brain].rowsCompleted = newRowsCompleted;
-        [_editableRowsCompletedDisplay setText: [NSString stringWithFormat:@"%g", newRowsCompleted]];
-    }
-}
-
-
-
-- (IBAction)totalRowInput:(UITextField *)sender {
-    NSString *totalText = [sender text];
-    
-    if ([self brain].rowsCompleted > [totalText doubleValue]){
-        [self setRowsCompletedToZero];
-    }
-    [self brain].totalRows = [totalText doubleValue];
-    [_rowsToDo setText:[NSString stringWithFormat:@"%g", [[self brain] calculateRowsToDo]]];
-    
 }
 
 

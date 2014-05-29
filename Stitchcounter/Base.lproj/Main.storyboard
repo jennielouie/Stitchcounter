@@ -74,10 +74,11 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="t6f-DX-hjv">
-                                <rect key="frame" x="235" y="367" width="77" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Edit" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="t6f-DX-hjv">
+                                <rect key="frame" x="235" y="363" width="77" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" red="0.76135784650000005" green="0.20911963059999999" blue="0.29849893280000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
                                     <action selector="editRowsCompletedPressed:" destination="vXZ-lx-hvc" eventType="editingDidEnd" id="zYa-jo-3Nd"/>
@@ -102,7 +103,7 @@
                     </view>
                     <connections>
                         <outlet property="alert" destination="5P7-KY-vRH" id="ANb-DZ-ugp"/>
-                        <outlet property="editableRowsCompletedDisplay" destination="t6f-DX-hjv" id="8zs-Yd-ZYI"/>
+                        <outlet property="editableRowsCompletedDisplay" destination="t6f-DX-hjv" id="87C-uj-bjW"/>
                         <outlet property="rowsCompleted" destination="9Le-GO-Zrq" id="ifs-AI-r96"/>
                         <outlet property="rowsToDo" destination="ofj-Uv-ptF" id="ep8-Bz-FrI"/>
                         <outlet property="stepper" destination="gHg-Tc-yHJ" id="lpe-xP-xIa"/>
