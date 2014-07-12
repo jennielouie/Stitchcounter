@@ -11,7 +11,6 @@
 @interface ViewController ()
 
 @property (weak, nonatomic) IBOutlet UILabel *rowsToDo;
-@property (weak, nonatomic) IBOutlet UILabel *rowsCompleted;
 @property  IBOutlet UITextField *totalRows;
 @property (weak, nonatomic) IBOutlet UIStepper *stepper;
 @property (weak, nonatomic) IBOutlet UITextField *editableRowsCompletedDisplay;
@@ -53,10 +52,9 @@
 
 -(void)updateUI {
     [_rowsToDo setText:[NSString stringWithFormat:@"%g", [self brain].rowsToDo]];
-    [_rowsCompleted setText:[NSString stringWithFormat:@"%g", [self brain].rowsCompleted]];
     [_totalRows setText:[NSString stringWithFormat:@"%g", [self brain].totalRows]];
-    [_editableRowsCompletedDisplay setText:@"Edit"];
-    _stepper.value = [self brain].rowsCompleted;
+    [_editableRowsCompletedDisplay setText:[NSString stringWithFormat:@"%g", [self brain].rowsCompleted]];
+    _stepper.value = [_editableRowsCompletedDisplay.text doubleValue];
 }
 
 - (IBAction)alertButtonPressed:(UIButton *)sender {

@@ -22,6 +22,9 @@
 		E608639718DA5AA500515688 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E608639518DA5AA500515688 /* InfoPlist.strings */; };
 		E608639918DA5AA500515688 /* StitchcounterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E608639818DA5AA500515688 /* StitchcounterTests.m */; };
 		E668641D1936B3D6005E7583 /* CounterBrain.m in Sources */ = {isa = PBXBuildFile; fileRef = E668641C1936B3D6005E7583 /* CounterBrain.m */; };
+		E6EBD8731971C75C007FF48B /* DetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = E6EBD8701971C75C007FF48B /* DetailView.m */; };
+		E6EBD8741971C75C007FF48B /* StitchCountView.m in Sources */ = {isa = PBXBuildFile; fileRef = E6EBD8721971C75C007FF48B /* StitchCountView.m */; };
+		E6EBD8771971C767007FF48B /* Prog2ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E6EBD8761971C767007FF48B /* Prog2ViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +59,12 @@
 		E608639818DA5AA500515688 /* StitchcounterTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StitchcounterTests.m; sourceTree = "<group>"; };
 		E668641C1936B3D6005E7583 /* CounterBrain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CounterBrain.m; sourceTree = "<group>"; };
 		E668641E1936B3E3005E7583 /* CounterBrain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CounterBrain.h; sourceTree = "<group>"; };
+		E6EBD86F1971C75C007FF48B /* DetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailView.h; sourceTree = "<group>"; };
+		E6EBD8701971C75C007FF48B /* DetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailView.m; sourceTree = "<group>"; };
+		E6EBD8711971C75C007FF48B /* StitchCountView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StitchCountView.h; sourceTree = "<group>"; };
+		E6EBD8721971C75C007FF48B /* StitchCountView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StitchCountView.m; sourceTree = "<group>"; };
+		E6EBD8751971C767007FF48B /* Prog2ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Prog2ViewController.h; sourceTree = "<group>"; };
+		E6EBD8761971C767007FF48B /* Prog2ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Prog2ViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +124,12 @@
 		E608637318DA5AA500515688 /* Stitchcounter */ = {
 			isa = PBXGroup;
 			children = (
+				E6EBD8751971C767007FF48B /* Prog2ViewController.h */,
+				E6EBD8761971C767007FF48B /* Prog2ViewController.m */,
+				E6EBD86F1971C75C007FF48B /* DetailView.h */,
+				E6EBD8701971C75C007FF48B /* DetailView.m */,
+				E6EBD8711971C75C007FF48B /* StitchCountView.h */,
+				E6EBD8721971C75C007FF48B /* StitchCountView.m */,
 				E608637F18DA5AA500515688 /* Main.storyboard */,
 				E608638218DA5AA500515688 /* ViewController.h */,
 				E608638318DA5AA500515688 /* ViewController.m */,
@@ -256,8 +271,11 @@
 			files = (
 				E608638418DA5AA500515688 /* ViewController.m in Sources */,
 				E668641D1936B3D6005E7583 /* CounterBrain.m in Sources */,
+				E6EBD8731971C75C007FF48B /* DetailView.m in Sources */,
 				E608637E18DA5AA500515688 /* AppDelegate.m in Sources */,
 				E608637A18DA5AA500515688 /* main.m in Sources */,
+				E6EBD8741971C75C007FF48B /* StitchCountView.m in Sources */,
+				E6EBD8771971C767007FF48B /* Prog2ViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
