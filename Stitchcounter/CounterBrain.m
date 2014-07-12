@@ -16,7 +16,7 @@
 -(void)resetCounter {
     _rowsCompleted = 0;
     _rowsToDo = 0;
-    _totalRows = 5;
+    _totalRows = 0;
 }
 
 
@@ -24,6 +24,7 @@
     self = [super init];
     _totalRows = [totalRows doubleValue];
     _rowsCompleted = 0;
+    [self calculateRowsToDo];
     return self;
 }
 

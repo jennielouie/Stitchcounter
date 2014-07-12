@@ -21,6 +21,7 @@
 		E608638F18DA5AA500515688 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E608637118DA5AA500515688 /* UIKit.framework */; };
 		E608639718DA5AA500515688 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E608639518DA5AA500515688 /* InfoPlist.strings */; };
 		E608639918DA5AA500515688 /* StitchcounterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E608639818DA5AA500515688 /* StitchcounterTests.m */; };
+		E668641D1936B3D6005E7583 /* CounterBrain.m in Sources */ = {isa = PBXBuildFile; fileRef = E668641C1936B3D6005E7583 /* CounterBrain.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,8 @@
 		E608639418DA5AA500515688 /* StitchcounterTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "StitchcounterTests-Info.plist"; sourceTree = "<group>"; };
 		E608639618DA5AA500515688 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		E608639818DA5AA500515688 /* StitchcounterTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StitchcounterTests.m; sourceTree = "<group>"; };
+		E668641C1936B3D6005E7583 /* CounterBrain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CounterBrain.m; sourceTree = "<group>"; };
+		E668641E1936B3E3005E7583 /* CounterBrain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CounterBrain.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,11 +115,11 @@
 		E608637318DA5AA500515688 /* Stitchcounter */ = {
 			isa = PBXGroup;
 			children = (
-				E608637C18DA5AA500515688 /* AppDelegate.h */,
-				E608637D18DA5AA500515688 /* AppDelegate.m */,
 				E608637F18DA5AA500515688 /* Main.storyboard */,
 				E608638218DA5AA500515688 /* ViewController.h */,
 				E608638318DA5AA500515688 /* ViewController.m */,
+				E668641E1936B3E3005E7583 /* CounterBrain.h */,
+				E668641C1936B3D6005E7583 /* CounterBrain.m */,
 				E608638518DA5AA500515688 /* Images.xcassets */,
 				E608637418DA5AA500515688 /* Supporting Files */,
 			);
@@ -126,6 +129,8 @@
 		E608637418DA5AA500515688 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				E608637C18DA5AA500515688 /* AppDelegate.h */,
+				E608637D18DA5AA500515688 /* AppDelegate.m */,
 				E608637518DA5AA500515688 /* Stitchcounter-Info.plist */,
 				E608637618DA5AA500515688 /* InfoPlist.strings */,
 				E608637918DA5AA500515688 /* main.m */,
@@ -250,6 +255,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E608638418DA5AA500515688 /* ViewController.m in Sources */,
+				E668641D1936B3D6005E7583 /* CounterBrain.m in Sources */,
 				E608637E18DA5AA500515688 /* AppDelegate.m in Sources */,
 				E608637A18DA5AA500515688 /* main.m in Sources */,
 			);
@@ -376,10 +382,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Stitchcounter/Stitchcounter-Prefix.pch";
 				INFOPLIST_FILE = "Stitchcounter/Stitchcounter-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -389,10 +397,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Stitchcounter/Stitchcounter-Prefix.pch";
 				INFOPLIST_FILE = "Stitchcounter/Stitchcounter-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -456,6 +466,7 @@
 				E608639E18DA5AA500515688 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E608639F18DA5AA500515688 /* Build configuration list for PBXNativeTarget "StitchcounterTests" */ = {
 			isa = XCConfigurationList;
@@ -464,6 +475,7 @@
 				E60863A118DA5AA500515688 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

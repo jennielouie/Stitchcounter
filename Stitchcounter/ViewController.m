@@ -29,16 +29,6 @@
 
 
 
--(void)updateUI {
-    [_rowsToDo setText:[NSString stringWithFormat:@"%g", [self brain].rowsToDo]];
-    [_rowsCompleted setText:[NSString stringWithFormat:@"%g", [self brain].rowsCompleted]];
-    [_totalRows setText:[NSString stringWithFormat:@"%g", [self brain].totalRows]];
-    [_editableRowsCompletedDisplay setText:@"Edit"];
-    _stepper.value = [self brain].rowsCompleted;
-}
-
-
-
 - (IBAction)stepperPressed:(UIStepper *)sender {
     double steppervalue = sender.value;
     [[self brain] updateWithNewRowsCompleted:steppervalue];
@@ -59,6 +49,15 @@
     [self updateUI];
 }
 
+
+
+-(void)updateUI {
+    [_rowsToDo setText:[NSString stringWithFormat:@"%g", [self brain].rowsToDo]];
+    [_rowsCompleted setText:[NSString stringWithFormat:@"%g", [self brain].rowsCompleted]];
+    [_totalRows setText:[NSString stringWithFormat:@"%g", [self brain].totalRows]];
+    [_editableRowsCompletedDisplay setText:@"Edit"];
+    _stepper.value = [self brain].rowsCompleted;
+}
 
 - (IBAction)alertButtonPressed:(UIButton *)sender {
     
@@ -90,6 +89,7 @@
     _editableRowsCompletedDisplay.clearsOnBeginEditing = YES;
     _editableRowsCompletedDisplay.returnKeyType = UIReturnKeyDone;
     _editableRowsCompletedDisplay.delegate = self;
+    NSLog(@"loaded view");
 }
 
 -(BOOL)textFieldShouldReturn:(UITextField *)textField {
