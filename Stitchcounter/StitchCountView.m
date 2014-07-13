@@ -14,6 +14,7 @@
 @property (strong, nonatomic) UILabel *stitchesLeft;
 @property (strong, nonatomic) UIButton *addStitch;
 @property (strong, nonatomic) UIButton *delStitch;
+@property (weak, nonatomic) UIStepper *stepper;
 @end
 
 @implementation StitchCountView

@@ -10,6 +10,6 @@
 #import "StitchCountView.h"
 #import "DetailView.h"
 
-@interface Prog2ViewController : UIViewController
+@interface Prog2ViewController : UIViewController <UITextFieldDelegate, UIAlertViewDelegate>
 
 @end

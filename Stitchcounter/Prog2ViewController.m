@@ -48,6 +48,31 @@
     [self.resetButton3 setTitleColor:[UIColor grayColor] forState:UIControlStateHighlighted];
     [self.view addSubview:self.resetButton3];
     
+    
+    [self.resetButton3 addTarget:self action:@selector(resetButtonTapped) forControlEvents:UIControlEventTouchUpInside];
+
+}
+
+-(void)resetButtonTapped
+{
+
+UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Reset all counts to zero?"
+                                                message:@"This cannot be undone"
+                                               delegate:self
+                                      cancelButtonTitle:@"No, keep values"
+                                      otherButtonTitles: @"Yes, reset",nil];
+[self.resetButton3 setTitle:@"Reset All" forState:UIControlStateNormal];
+[alert show];
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+//    NSString *title = [alertView buttonTitleAtIndex:buttonIndex];
+//    if([title isEqualToString:@"Yes, reset"])
+//    {
+//        [[self brain] resetCounter];
+//        [self updateUI];
+//    }
 }
 
 -(void)addRules

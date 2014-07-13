@@ -64,7 +64,7 @@
                                                    delegate:self
                                           cancelButtonTitle:@"No, keep values"
                                           otherButtonTitles: @"Yes, reset",nil];
-    [self.alert setTitle:@"Reset" forState:UIControlStateNormal];
+    [self.alert setTitle:@"Reset All" forState:UIControlStateNormal];
     [alert show];
 }
 

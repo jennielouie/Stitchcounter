@@ -16,19 +16,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5P7-KY-vRH">
-                                <rect key="frame" x="117" y="509" width="86" height="39"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="1" green="0.80000001190000003" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                <state key="normal" title="Reset All">
-                                    <color key="titleColor" red="0.76135784650000005" green="0.20911963059999999" blue="0.29849893280000001" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="alertButtonPressed:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="YWp-we-JQ2"/>
-                                </connections>
-                            </button>
                             <view contentMode="scaleToFill" fixedFrame="YES" restorationIdentifier="to do view" translatesAutoresizingMaskIntoConstraints="NO" id="x6S-Cs-z8p">
                                 <rect key="frame" x="20" y="218" width="280" height="283"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -126,7 +113,7 @@
                         <rect key="contentStretch" x="0.0" y="0.0" width="1" height="0.94999999999999996"/>
                     </view>
                     <connections>
-                        <outlet property="alert" destination="5P7-KY-vRH" id="ANb-DZ-ugp"/>
+                        <outlet property="alert" destination="7Lr-fO-KkT" id="fSr-pB-yyF"/>
                         <outlet property="editableRowsCompletedDisplay" destination="t6f-DX-hjv" id="87C-uj-bjW"/>
                         <outlet property="rowsToDo" destination="ofj-Uv-ptF" id="ep8-Bz-FrI"/>
                         <outlet property="stepper" destination="gHg-Tc-yHJ" id="lpe-xP-xIa"/>
