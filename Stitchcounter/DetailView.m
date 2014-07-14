@@ -30,6 +30,7 @@
     self.total = [[UITextField alloc] init];
     self.total.translatesAutoresizingMaskIntoConstraints = NO;
     self.total.text = @"Total: 0";
+    self.total.keyboardType = UIKeyboardTypeNumberPad;
     self.total.textColor = [UIColor purpleColor];
     //self.total.backgroundColor = [UIColor clearColor];
     self.total.textAlignment = NSTextAlignmentLeft;
@@ -74,6 +75,7 @@
     self.completed.translatesAutoresizingMaskIntoConstraints = NO;
     self.completed.text = @"Done: 0";
     self.completed.textColor = [UIColor purpleColor];
+    self.completed.keyboardType = UIKeyboardTypeNumberPad;
     //self.completed.backgroundColor = [UIColor clearColor];
     self.completed.textAlignment = NSTextAlignmentLeft;
     

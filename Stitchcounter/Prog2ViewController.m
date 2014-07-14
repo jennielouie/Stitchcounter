@@ -28,8 +28,12 @@
 -(void)detailView:(DetailView *)detailView totalTextFieldEditedWithText:(NSString *)total
 {
     double totalNumber = [total doubleValue];
-    [[self brain] updateWithNewTotal:totalNumber];
-   [self updateUI];
+    if (totalNumber > 0)
+    {
+        [[self brain] updateWithNewTotal:totalNumber];
+    }
+    [self updateUI];
+
 }
 
 -(void)detailView:(DetailView *)detailView completedTextFieldEditedWithText:(NSString *)completed
@@ -50,16 +54,21 @@
 
 - (void)stitchCountViewIncrementCount:(StitchCountView *)stitchCountView
 {
-
-    [[self brain] changeRowsCompletedWithDelta:1];
-    self.frogged = NO;
-    [self updateUI];
+    if ([self brain].totalRows !=0)
+    {
+        [[self brain] changeRowsCompletedWithDelta:1];
+        self.frogged = NO;
+        [self updateUI];
+    }
 }
 - (void)stitchCountViewDecrementCount:(StitchCountView *)stitchCountView
 {
-    [[self brain] changeRowsCompletedWithDelta:-1];
-    self.frogged = YES;
-    [self updateUI];
+    if ([self brain].totalRows !=0)
+    {
+        [[self brain] changeRowsCompletedWithDelta:-1];
+        self.frogged = YES;
+        [self updateUI];
+    }
 }
 
 -(void)updateUI {
@@ -248,6 +257,10 @@ UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Reset all counts to ze
     
 }
 
+-(BOOL)textFieldShouldReturn:(UITextField *)textField {
+    [textField resignFirstResponder];
+    return NO;
+}
 
 - (void)didReceiveMemoryWarning
 {
