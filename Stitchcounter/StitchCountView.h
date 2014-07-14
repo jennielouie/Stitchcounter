@@ -11,4 +11,5 @@
 @interface StitchCountView : UIView
 
 -(void)addStitchCountSubviews;
+-(void)updateStitchCount: (double)stichesToDo;
 @end

@@ -16,12 +16,47 @@
 
 @implementation Prog2ViewController
 
+-(CounterBrain *)brain
+{
+    if (!brain) {
+        brain = [[CounterBrain alloc] initWithTotalRows:0];
+    }
+    return brain;
+}
 
+-(void)detailView:(DetailView *)detailView totalTextFieldEditedWithText:(NSString *)total
+{
+    NSLog(@"The new total is %@", total);
+    double totalNumber = [total doubleValue];
+    [[self brain] updateWithNewTotal:totalNumber];
+   [self updateUI];
+}
+
+-(void)detailView:(DetailView *)detailView completedTextFieldEditedWithText:(NSString *)completed
+{
+    NSLog(@"The rows completed is %@", completed);
+    double completedNumber = [completed doubleValue];
+    [[self brain] updateWithNewRowsCompleted:completedNumber];
+    [self updateUI];
+}
+
+-(void)updateUI {
+    double JStotal =[self brain].totalRows;
+    double JScompleted = [self brain].rowsCompleted;
+    double JSstitchesToDo = [self brain].rowsToDo;
+    [self.detailsWindow3 updateDetailViewTotal: JStotal AndCompleted:JScompleted];
+    [self.stitchCountWindow3 updateStitchCount: JSstitchesToDo];
+
+  //  _stepper.value = [_editableRowsCompletedDisplay.text doubleValue];
+}
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     [self setupViews];
     [self addRules];
+    [self.detailsWindow3 addDetailRules];
+    
+    
     // Do any additional setup after loading the view.
 }
 
@@ -37,6 +72,7 @@
     self.detailsWindow3 = [DetailView new];
     self.detailsWindow3.translatesAutoresizingMaskIntoConstraints = NO;
     self.detailsWindow3.backgroundColor = [UIColor colorWithRed:1.00 green:0.83 blue:0.58 alpha:1.0];
+    self.detailsWindow3.delegate = self;
     [self.view addSubview:self.detailsWindow3];
     [self.detailsWindow3 addDetailSubviews];
     

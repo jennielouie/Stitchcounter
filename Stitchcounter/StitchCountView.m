@@ -36,6 +36,10 @@
     // Drawing code
 }
 */
+-(void)updateStitchCount: (double)stichesToDo
+{
+    [_stitchesLeft  setText:[NSString stringWithFormat:@"%g", stichesToDo]];
+}
 
 -(void)addStitchCountSubviews
 {
@@ -84,7 +88,7 @@
     
     self.addStitch = [UIButton new];
     self.addStitch.translatesAutoresizingMaskIntoConstraints = NO;
-    [self.addStitch setTitle:@"did one!" forState:UIControlStateNormal];
+    [self.addStitch setTitle:@"Did one!" forState:UIControlStateNormal];
     [self.addStitch setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
     [self.addStitch setTitleColor:[UIColor grayColor] forState:UIControlStateHighlighted];
     [self addSubview:self.addStitch];
@@ -125,7 +129,7 @@
     self.delStitch = [UIButton new];
     self.delStitch.translatesAutoresizingMaskIntoConstraints = NO;
     
-    [self.delStitch setTitle:@"oops!" forState:UIControlStateNormal];
+    [self.delStitch setTitle:@"Oops!" forState:UIControlStateNormal];
     [self.delStitch setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
     [self.delStitch setTitleColor:[UIColor grayColor] forState:UIControlStateHighlighted];
     [self addSubview:self.delStitch];

@@ -9,7 +9,11 @@
 #import <UIKit/UIKit.h>
 #import "StitchCountView.h"
 #import "DetailView.h"
+#import "CounterBrain.h"
 
-@interface Prog2ViewController : UIViewController <UITextFieldDelegate, UIAlertViewDelegate>
+@interface Prog2ViewController : UIViewController <UITextFieldDelegate, UIAlertViewDelegate, DetailViewDelegate>
+{
+    CounterBrain *brain;
+}
 
 @end

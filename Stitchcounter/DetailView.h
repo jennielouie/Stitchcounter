@@ -7,7 +7,18 @@
 //
 
 #import <UIKit/UIKit.h>
+@class DetailView;
 
-@interface DetailView : UIView
+@protocol DetailViewDelegate <NSObject>
+- (void)detailView:(DetailView *)detailView totalTextFieldEditedWithText:(NSString *)total;
+- (void)detailView:(DetailView *)detailView completedTextFieldEditedWithText:(NSString *)completed;
+@end
+
+@interface DetailView : UIView <UITextFieldDelegate>
 -(void)addDetailSubviews;
+-(void)addDetailRules;
+-(void)updateDetailViewTotal:(double)total AndCompleted:(double)completed;
+
+@property (nonatomic, assign) id<DetailViewDelegate>delegate;
+
 @end

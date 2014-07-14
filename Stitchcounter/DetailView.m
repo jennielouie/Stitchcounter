@@ -9,9 +9,8 @@
 #import "DetailView.h"
 
 @interface DetailView ()
-@property (strong, nonatomic) UIButton *resetButton3;
-@property (strong, nonatomic) UILabel *total;
-@property (strong, nonatomic) UILabel *completed;
+@property (strong, nonatomic) UITextField *total;
+@property (strong, nonatomic) UITextField *completed;
 
 @end
 
@@ -28,14 +27,16 @@
 
 -(void)addDetailSubviews
 {
-    self.total = [[UILabel alloc] init];
+    self.total = [[UITextField alloc] init];
     self.total.translatesAutoresizingMaskIntoConstraints = NO;
     self.total.text = @"Total: 30";
     self.total.textColor = [UIColor purpleColor];
-    self.total.backgroundColor = [UIColor clearColor];
+    //self.total.backgroundColor = [UIColor clearColor];
     self.total.textAlignment = NSTextAlignmentLeft;
     
     [self addSubview:self.total];
+    
+    [self.total addTarget:self action:@selector(totalWasEdited) forControlEvents:UIControlEventEditingDidEndOnExit];
     
     [self addConstraint:[NSLayoutConstraint constraintWithItem:self.total
                                                      attribute:NSLayoutAttributeLeading
@@ -69,14 +70,15 @@
                                                      multiplier:0.4
                                                        constant:0]];
     
-    self.completed = [[UILabel alloc] init];
+    self.completed = [[UITextField alloc] init];
     self.completed.translatesAutoresizingMaskIntoConstraints = NO;
     self.completed.text = @"Done: 13";
     self.completed.textColor = [UIColor purpleColor];
-    self.completed.backgroundColor = [UIColor clearColor];
+    //self.completed.backgroundColor = [UIColor clearColor];
     self.completed.textAlignment = NSTextAlignmentLeft;
     
     [self addSubview:self.completed];
+     [self.completed addTarget:self action:@selector(completedWasEdited) forControlEvents:UIControlEventEditingDidEndOnExit];
     
     [self addConstraint:[NSLayoutConstraint constraintWithItem:self.completed
                                                      attribute:NSLayoutAttributeLeading
@@ -110,6 +112,33 @@
                                                      multiplier:0.4
                                                        constant:0]];
     
+}
+
+-(void)totalWasEdited
+{
+    [self.delegate  detailView:self
+  totalTextFieldEditedWithText:self.total.text];
+}
+
+-(void)completedWasEdited
+{
+    [self.delegate      detailView:self
+  completedTextFieldEditedWithText:self.completed.text];
+}
+
+- (void)addDetailRules
+{
+    _total.clearsOnBeginEditing = YES;
+    _total.returnKeyType = UIReturnKeyDone;
+    _completed.clearsOnBeginEditing = YES;
+    _completed.returnKeyType = UIReturnKeyDone;
+    NSLog(@"loaded view");
+}
+
+-(void)updateDetailViewTotal:(double)total AndCompleted:(double)completed
+{
+    [_total setText:[NSString stringWithFormat:@"Total: %g", total]];
+    [_completed setText:[NSString stringWithFormat:@"Done: %g", completed]];
 }
 
 /*
