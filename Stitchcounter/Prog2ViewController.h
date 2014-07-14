@@ -11,7 +11,7 @@
 #import "DetailView.h"
 #import "CounterBrain.h"
 
-@interface Prog2ViewController : UIViewController <UITextFieldDelegate, UIAlertViewDelegate, DetailViewDelegate>
+@interface Prog2ViewController : UIViewController <UITextFieldDelegate, UIAlertViewDelegate, DetailViewDelegate, StitchCountViewDelegate>
 {
     CounterBrain *brain;
 }

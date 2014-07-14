@@ -7,9 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
+@class StitchCountView;
+
+@protocol StitchCountViewDelegate <NSObject>
+- (void)stitchCountViewIncrementCount:(StitchCountView *)stitchCountView;
+- (void)stitchCountViewDecrementCount:(StitchCountView *)stitchCountView;
+@end
 
 @interface StitchCountView : UIView
 
 -(void)addStitchCountSubviews;
 -(void)updateStitchCount: (double)stichesToDo;
+
+@property (nonatomic, assign) id<StitchCountViewDelegate>delegate;
 @end

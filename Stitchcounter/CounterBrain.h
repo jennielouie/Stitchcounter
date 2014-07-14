@@ -20,6 +20,7 @@
 -(void)updateWithNewTotal:(double)newTotal;
 -(void)updateWithNewRowsCompleted:(double)steppervalue;
 -(void)updateWithEditedRowsCompleted:(double)editedRowsCompleted;
+-(void)changeRowsCompletedWithDelta:(double)delta;
 
 
 @end

@@ -14,7 +14,7 @@
 @property (strong, nonatomic) UILabel *stitchesLeft;
 @property (strong, nonatomic) UIButton *addStitch;
 @property (strong, nonatomic) UIButton *delStitch;
-@property (weak, nonatomic) UIStepper *stepper;
+@property (strong, nonatomic) UILabel *bannerInfo;
 @end
 
 @implementation StitchCountView
@@ -36,22 +36,78 @@
     // Drawing code
 }
 */
+
+- (void)addStitchWasPressed
+{
+    [self.delegate stitchCountViewIncrementCount:self];
+}
+
+
+
+- (void)delStitchWasPressed
+{
+    [self.delegate stitchCountViewDecrementCount:self];
+}
+
 -(void)updateStitchCount: (double)stichesToDo
 {
-    [_stitchesLeft  setText:[NSString stringWithFormat:@"%g", stichesToDo]];
+    [_stitchesLeft  setText:[NSString stringWithFormat:@"%g to go", stichesToDo]];
 }
 
 -(void)addStitchCountSubviews
 {
     
+    
+    self.bannerInfo = [[UILabel alloc] init];
+    self.bannerInfo.translatesAutoresizingMaskIntoConstraints = NO;
+    self.bannerInfo.text = @"Enter total rows required";
+    self.bannerInfo.textColor = [UIColor blackColor];
+    self.bannerInfo.textAlignment = NSTextAlignmentCenter;
+    [self addSubview:self.bannerInfo];
+    
+    
     self.stitchesLeft = [[UILabel alloc] init];
     self.stitchesLeft.translatesAutoresizingMaskIntoConstraints = NO;
-    self.stitchesLeft.text = @"17 to go";
-    self.stitchesLeft.textColor = [UIColor purpleColor];
+    //self.stitchesLeft.text = @"17 to go";
+    self.stitchesLeft.textColor = [UIColor blackColor];
     self.stitchesLeft.backgroundColor = [UIColor whiteColor];
     self.stitchesLeft.textAlignment = NSTextAlignmentCenter;
-    
+
     [self addSubview:self.stitchesLeft];
+    
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.bannerInfo
+                                                     attribute:NSLayoutAttributeCenterX
+                                                     relatedBy:NSLayoutRelationEqual
+                                                        toItem:self
+                                                     attribute:NSLayoutAttributeCenterX
+                                                    multiplier:1.0
+                                                      constant:0]];
+    
+    [self  addConstraint:[NSLayoutConstraint constraintWithItem:self.bannerInfo
+                                                      attribute:NSLayoutAttributeCenterY
+                                                      relatedBy:NSLayoutRelationEqual
+                                                         toItem:self
+                                                      attribute:NSLayoutAttributeCenterY
+                                                     multiplier:0.2
+                                                       constant:0]];
+    
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.bannerInfo
+                                                     attribute:NSLayoutAttributeHeight
+                                                     relatedBy:NSLayoutRelationEqual
+                                                        toItem:self
+                                                     attribute:NSLayoutAttributeHeight
+                                                    multiplier:0.1
+                                                      constant:0]];
+    
+    [self  addConstraint:[NSLayoutConstraint constraintWithItem:self.bannerInfo
+                                                      attribute:NSLayoutAttributeWidth
+                                                      relatedBy:NSLayoutRelationEqual
+                                                         toItem:self
+                                                      attribute:NSLayoutAttributeWidth
+                                                     multiplier:1.0
+                                                       constant:0]];
+    
+    
     
     [self addConstraint:[NSLayoutConstraint constraintWithItem:self.stitchesLeft
                                                                         attribute:NSLayoutAttributeCenterX
@@ -91,6 +147,7 @@
     [self.addStitch setTitle:@"Did one!" forState:UIControlStateNormal];
     [self.addStitch setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
     [self.addStitch setTitleColor:[UIColor grayColor] forState:UIControlStateHighlighted];
+    [self.addStitch addTarget:self action:@selector(addStitchWasPressed) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:self.addStitch];
     
     [self addConstraint:[NSLayoutConstraint constraintWithItem:self.addStitch
@@ -132,6 +189,7 @@
     [self.delStitch setTitle:@"Oops!" forState:UIControlStateNormal];
     [self.delStitch setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
     [self.delStitch setTitleColor:[UIColor grayColor] forState:UIControlStateHighlighted];
+    [self.delStitch addTarget:self action:@selector(delStitchWasPressed) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:self.delStitch];
     
     [self addConstraint:[NSLayoutConstraint constraintWithItem:self.delStitch

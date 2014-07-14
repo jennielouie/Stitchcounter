@@ -34,22 +34,31 @@
 }
 
 -(void)updateWithNewTotal:(double)newTotal {
-    if (_rowsCompleted > newTotal){
-        _rowsCompleted = 0;
-    }
+//    if (_rowsCompleted > newTotal){
+//        _rowsCompleted = 0;
+//    }
     _totalRows = newTotal;
     [self calculateRowsToDo];
 }
 
--(void)updateWithNewRowsCompleted:(double)steppervalue {
-    if(steppervalue >= _totalRows) {
+-(void)updateWithNewRowsCompleted:(double)newValue {
+    if(newValue >= _totalRows) {
         _rowsCompleted = _totalRows;
     } else {
-    _rowsCompleted = steppervalue;
+    _rowsCompleted = newValue;
     }
     [self calculateRowsToDo];
 }
 
+-(void)changeRowsCompletedWithDelta:(double)delta
+{
+    double changedValue = _rowsCompleted + delta;
+    //if(changedValue >= 0 & changedValue <= _totalRows)
+    //{
+        _rowsCompleted = changedValue;
+        [self calculateRowsToDo];
+    //}
+}
 
 -(void)updateWithEditedRowsCompleted:(double)editedRowsCompleted {
     if (editedRowsCompleted < _totalRows){

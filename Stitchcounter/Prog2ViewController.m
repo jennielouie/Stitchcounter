@@ -26,7 +26,6 @@
 
 -(void)detailView:(DetailView *)detailView totalTextFieldEditedWithText:(NSString *)total
 {
-    NSLog(@"The new total is %@", total);
     double totalNumber = [total doubleValue];
     [[self brain] updateWithNewTotal:totalNumber];
    [self updateUI];
@@ -34,9 +33,20 @@
 
 -(void)detailView:(DetailView *)detailView completedTextFieldEditedWithText:(NSString *)completed
 {
-    NSLog(@"The rows completed is %@", completed);
     double completedNumber = [completed doubleValue];
     [[self brain] updateWithNewRowsCompleted:completedNumber];
+    [self updateUI];
+}
+
+- (void)stitchCountViewIncrementCount:(StitchCountView *)stitchCountView
+{
+
+    [[self brain] changeRowsCompletedWithDelta:1];
+    [self updateUI];
+}
+- (void)stitchCountViewDecrementCount:(StitchCountView *)stitchCountView
+{
+    [[self brain] changeRowsCompletedWithDelta:-1];
     [self updateUI];
 }
 
@@ -47,7 +57,6 @@
     [self.detailsWindow3 updateDetailViewTotal: JStotal AndCompleted:JScompleted];
     [self.stitchCountWindow3 updateStitchCount: JSstitchesToDo];
 
-  //  _stepper.value = [_editableRowsCompletedDisplay.text doubleValue];
 }
 - (void)viewDidLoad
 {
@@ -66,6 +75,7 @@
     self.stitchCountWindow3 = [StitchCountView new];
     self.stitchCountWindow3.translatesAutoresizingMaskIntoConstraints = NO;
     self.stitchCountWindow3.backgroundColor = [UIColor colorWithRed:0.95 green:0.47 blue:0.48 alpha:1.0];
+    self.stitchCountWindow3.delegate = self;
     [self.view addSubview:self.stitchCountWindow3];
     [self.stitchCountWindow3 addStitchCountSubviews];
     
@@ -103,12 +113,12 @@ UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Reset all counts to ze
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-//    NSString *title = [alertView buttonTitleAtIndex:buttonIndex];
-//    if([title isEqualToString:@"Yes, reset"])
-//    {
-//        [[self brain] resetCounter];
-//        [self updateUI];
-//    }
+    NSString *title = [alertView buttonTitleAtIndex:buttonIndex];
+    if([title isEqualToString:@"Yes, reset"])
+    {
+        [[self brain] resetCounter];
+        [self updateUI];
+    }
 }
 
 -(void)addRules
