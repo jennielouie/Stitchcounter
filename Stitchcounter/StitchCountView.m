@@ -16,6 +16,7 @@
 @property (strong, nonatomic) UIButton *delStitch;
 @property (strong, nonatomic) UILabel *bannerInfo;
 @property (strong, nonatomic) NSMutableArray *attaGirls; //of NSStrings
+@property BOOL wasDecremented;
 @end
 
 @implementation StitchCountView
@@ -23,7 +24,7 @@
 
 -(NSMutableArray *)attaGirls
 {
-    _attaGirls = [[NSMutableArray alloc] initWithObjects:@"Keep going!", @"You're doing great!", @"One step closer!", @"Awesome!", @"You're getting there!", @"Nice job!", nil];
+    _attaGirls = [[NSMutableArray alloc] initWithObjects:@"Keep going!", @"You rock!", @"You're doing great!", @"One step closer!", @"Awesome!", @"You're getting there!", @"Nice job!", nil];
     return _attaGirls;
 }
 
@@ -42,7 +43,7 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        // Initialization code
+        self.wasDecremented = NO;
     }
     return self;
 }
@@ -59,6 +60,7 @@
 - (void)addStitchWasPressed
 {
     [self.delegate stitchCountViewIncrementCount:self];
+    self.wasDecremented = NO;
 }
 
 
@@ -66,6 +68,7 @@
 - (void)delStitchWasPressed
 {
     [self.delegate stitchCountViewDecrementCount:self];
+    self.wasDecremented = YES;
 }
 
 -(void)updateStitchCount: (double)stitchesToDo
@@ -74,7 +77,7 @@
 }
 
 
--(void)updateBannerInfo: (double)stitchesToDo comparedToTotal:(double)total
+-(void)updateBannerInfo: (double)stitchesToDo comparedToTotal:(double)total withDecrement:(BOOL)frog
 {
     NSString *bannerMessage;
     NSInteger numStitchesToDo = stitchesToDo;
@@ -91,7 +94,14 @@
     {
         bannerMessage = @"Frogging needed!";
     } else{
-        bannerMessage = [self getRandomAttaGirl]; 
+        if (frog)
+        {
+            bannerMessage = @"To err is human.";
+        }
+        else
+        {
+        bannerMessage = [self getRandomAttaGirl];
+        }
     }
     self.bannerInfo.text= bannerMessage;
 }

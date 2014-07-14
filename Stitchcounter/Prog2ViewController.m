@@ -12,6 +12,7 @@
 @property (strong, nonatomic) StitchCountView *stitchCountWindow3;
 @property (strong, nonatomic) DetailView *detailsWindow3;
 @property (strong, nonatomic) UIButton *resetButton3;
+@property BOOL frogged;
 @end
 
 @implementation Prog2ViewController
@@ -34,6 +35,15 @@
 -(void)detailView:(DetailView *)detailView completedTextFieldEditedWithText:(NSString *)completed
 {
     double completedNumber = [completed doubleValue];
+    
+    if ([self brain].rowsCompleted > completedNumber)
+    {
+        self.frogged = YES;
+    } else
+    {
+        self.frogged = NO;
+    }
+    
     [[self brain] updateWithNewRowsCompleted:completedNumber];
     [self updateUI];
 }
@@ -42,11 +52,13 @@
 {
 
     [[self brain] changeRowsCompletedWithDelta:1];
+    self.frogged = NO;
     [self updateUI];
 }
 - (void)stitchCountViewDecrementCount:(StitchCountView *)stitchCountView
 {
     [[self brain] changeRowsCompletedWithDelta:-1];
+    self.frogged = YES;
     [self updateUI];
 }
 
@@ -56,7 +68,7 @@
     double JSstitchesToDo = [self brain].rowsToDo;
     [self.detailsWindow3 updateDetailViewTotal: JStotal AndCompleted:JScompleted];
     [self.stitchCountWindow3 updateStitchCount: JSstitchesToDo];
-    [self.stitchCountWindow3 updateBannerInfo: JSstitchesToDo comparedToTotal:JStotal];
+    [self.stitchCountWindow3 updateBannerInfo: JSstitchesToDo comparedToTotal:JStotal withDecrement:self.frogged];
 
 }
 - (void)viewDidLoad
@@ -65,6 +77,7 @@
     [self setupViews];
     [self addRules];
     [self.detailsWindow3 addDetailRules];
+    self.frogged = NO;
     
     
     // Do any additional setup after loading the view.

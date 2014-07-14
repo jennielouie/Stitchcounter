@@ -18,7 +18,7 @@
 
 -(void)addStitchCountSubviews;
 -(void)updateStitchCount: (double)stitchesToDo;
--(void)updateBannerInfo: (double)stitchesToDo comparedToTotal: (double)total;
+-(void)updateBannerInfo: (double)stitchesToDo comparedToTotal: (double)total withDecrement:(BOOL)frog;
 -(void)resetBannerInfo;
 
 @property (nonatomic, assign) id<StitchCountViewDelegate>delegate;
