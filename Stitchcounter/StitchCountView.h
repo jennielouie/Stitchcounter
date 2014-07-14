@@ -17,7 +17,9 @@
 @interface StitchCountView : UIView
 
 -(void)addStitchCountSubviews;
--(void)updateStitchCount: (double)stichesToDo;
+-(void)updateStitchCount: (double)stitchesToDo;
+-(void)updateBannerInfo: (double)stitchesToDo comparedToTotal: (double)total;
+-(void)resetBannerInfo;
 
 @property (nonatomic, assign) id<StitchCountViewDelegate>delegate;
 @end

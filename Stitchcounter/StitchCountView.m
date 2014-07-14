@@ -15,9 +15,28 @@
 @property (strong, nonatomic) UIButton *addStitch;
 @property (strong, nonatomic) UIButton *delStitch;
 @property (strong, nonatomic) UILabel *bannerInfo;
+@property (strong, nonatomic) NSMutableArray *attaGirls; //of NSStrings
 @end
 
 @implementation StitchCountView
+
+
+-(NSMutableArray *)attaGirls
+{
+    _attaGirls = [[NSMutableArray alloc] initWithObjects:@"Keep going!", @"You're doing great!", @"One step closer!", @"Awesome!", @"You're getting there!", @"Nice job!", nil];
+    return _attaGirls;
+}
+
+-(NSString *)getRandomAttaGirl
+{
+    NSString *specificAttaGirl = nil;
+    if ([self.attaGirls count])
+    {
+        unsigned index = arc4random()% self.attaGirls.count;
+        specificAttaGirl = self.attaGirls[index];
+    }
+    return specificAttaGirl;
+}
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -49,31 +68,49 @@
     [self.delegate stitchCountViewDecrementCount:self];
 }
 
--(void)updateStitchCount: (double)stichesToDo
+-(void)updateStitchCount: (double)stitchesToDo
 {
-    [_stitchesLeft  setText:[NSString stringWithFormat:@"%g to go", stichesToDo]];
+    [_stitchesLeft  setText:[NSString stringWithFormat:@"%g to go", stitchesToDo]];
+}
+
+
+-(void)updateBannerInfo: (double)stitchesToDo comparedToTotal:(double)total
+{
+    NSString *bannerMessage;
+    NSInteger numStitchesToDo = stitchesToDo;
+    NSInteger numTotal = total;
+
+    if (numStitchesToDo==0) {
+        bannerMessage = @"Booya! All done";
+    }
+    else if(numStitchesToDo== numTotal)
+    {
+        bannerMessage = @"Let's get started";
+    }
+    else if (numStitchesToDo <0)
+    {
+        bannerMessage = @"Frogging needed!";
+    } else{
+        bannerMessage = [self getRandomAttaGirl]; 
+    }
+    self.bannerInfo.text= bannerMessage;
+}
+
+
+
+-(void)resetBannerInfo
+{
+    self.bannerInfo.text= @"Enter total rows required";
 }
 
 -(void)addStitchCountSubviews
 {
-    
-    
     self.bannerInfo = [[UILabel alloc] init];
     self.bannerInfo.translatesAutoresizingMaskIntoConstraints = NO;
     self.bannerInfo.text = @"Enter total rows required";
     self.bannerInfo.textColor = [UIColor blackColor];
     self.bannerInfo.textAlignment = NSTextAlignmentCenter;
     [self addSubview:self.bannerInfo];
-    
-    
-    self.stitchesLeft = [[UILabel alloc] init];
-    self.stitchesLeft.translatesAutoresizingMaskIntoConstraints = NO;
-    //self.stitchesLeft.text = @"17 to go";
-    self.stitchesLeft.textColor = [UIColor blackColor];
-    self.stitchesLeft.backgroundColor = [UIColor whiteColor];
-    self.stitchesLeft.textAlignment = NSTextAlignmentCenter;
-
-    [self addSubview:self.stitchesLeft];
     
     [self addConstraint:[NSLayoutConstraint constraintWithItem:self.bannerInfo
                                                      attribute:NSLayoutAttributeCenterX
@@ -106,6 +143,18 @@
                                                       attribute:NSLayoutAttributeWidth
                                                      multiplier:1.0
                                                        constant:0]];
+    
+    
+    self.stitchesLeft = [[UILabel alloc] init];
+    self.stitchesLeft.translatesAutoresizingMaskIntoConstraints = NO;
+    //self.stitchesLeft.text = @"17 to go";
+    self.stitchesLeft.textColor = [UIColor blackColor];
+    self.stitchesLeft.backgroundColor = [UIColor whiteColor];
+    self.stitchesLeft.textAlignment = NSTextAlignmentCenter;
+
+    [self addSubview:self.stitchesLeft];
+    
+
     
     
     

@@ -53,11 +53,11 @@
 -(void)changeRowsCompletedWithDelta:(double)delta
 {
     double changedValue = _rowsCompleted + delta;
-    //if(changedValue >= 0 & changedValue <= _totalRows)
-    //{
+    if(changedValue >= 0)
+    {
         _rowsCompleted = changedValue;
         [self calculateRowsToDo];
-    //}
+    }
 }
 
 -(void)updateWithEditedRowsCompleted:(double)editedRowsCompleted {

@@ -56,6 +56,7 @@
     double JSstitchesToDo = [self brain].rowsToDo;
     [self.detailsWindow3 updateDetailViewTotal: JStotal AndCompleted:JScompleted];
     [self.stitchCountWindow3 updateStitchCount: JSstitchesToDo];
+    [self.stitchCountWindow3 updateBannerInfo: JSstitchesToDo comparedToTotal:JStotal];
 
 }
 - (void)viewDidLoad
@@ -118,6 +119,7 @@ UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Reset all counts to ze
     {
         [[self brain] resetCounter];
         [self updateUI];
+        [self.stitchCountWindow3 resetBannerInfo];
     }
 }
 
