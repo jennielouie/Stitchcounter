@@ -10,6 +10,7 @@
 #import "StitchCountView.h"
 #import "DetailView.h"
 #import "CounterBrain.h"
+#import "TPKeyboardAvoidingScrollView.h"
 
 @interface Prog2ViewController : UIViewController <UITextFieldDelegate, UIAlertViewDelegate, DetailViewDelegate, StitchCountViewDelegate>
 {

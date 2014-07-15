@@ -25,6 +25,8 @@
 		E6EBD8731971C75C007FF48B /* DetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = E6EBD8701971C75C007FF48B /* DetailView.m */; };
 		E6EBD8741971C75C007FF48B /* StitchCountView.m in Sources */ = {isa = PBXBuildFile; fileRef = E6EBD8721971C75C007FF48B /* StitchCountView.m */; };
 		E6EBD8771971C767007FF48B /* Prog2ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E6EBD8761971C767007FF48B /* Prog2ViewController.m */; };
+		E6EBD87A1975A8AF007FF48B /* TPKeyboardAvoidingScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = E6EBD8791975A8AF007FF48B /* TPKeyboardAvoidingScrollView.m */; };
+		E6EBD87D1975A957007FF48B /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = E6EBD87C1975A957007FF48B /* UIScrollView+TPKeyboardAvoidingAdditions.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +67,10 @@
 		E6EBD8721971C75C007FF48B /* StitchCountView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StitchCountView.m; sourceTree = "<group>"; };
 		E6EBD8751971C767007FF48B /* Prog2ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Prog2ViewController.h; sourceTree = "<group>"; };
 		E6EBD8761971C767007FF48B /* Prog2ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Prog2ViewController.m; sourceTree = "<group>"; };
+		E6EBD8781975A89F007FF48B /* TPKeyboardAvoidingScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPKeyboardAvoidingScrollView.h; sourceTree = "<group>"; };
+		E6EBD8791975A8AF007FF48B /* TPKeyboardAvoidingScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPKeyboardAvoidingScrollView.m; sourceTree = "<group>"; };
+		E6EBD87B1975A957007FF48B /* UIScrollView+TPKeyboardAvoidingAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+TPKeyboardAvoidingAdditions.h"; sourceTree = "<group>"; };
+		E6EBD87C1975A957007FF48B /* UIScrollView+TPKeyboardAvoidingAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+TPKeyboardAvoidingAdditions.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,8 +133,12 @@
 				E6EBD8751971C767007FF48B /* Prog2ViewController.h */,
 				E6EBD8761971C767007FF48B /* Prog2ViewController.m */,
 				E6EBD86F1971C75C007FF48B /* DetailView.h */,
+				E6EBD87B1975A957007FF48B /* UIScrollView+TPKeyboardAvoidingAdditions.h */,
+				E6EBD87C1975A957007FF48B /* UIScrollView+TPKeyboardAvoidingAdditions.m */,
 				E6EBD8701971C75C007FF48B /* DetailView.m */,
 				E6EBD8711971C75C007FF48B /* StitchCountView.h */,
+				E6EBD8781975A89F007FF48B /* TPKeyboardAvoidingScrollView.h */,
+				E6EBD8791975A8AF007FF48B /* TPKeyboardAvoidingScrollView.m */,
 				E6EBD8721971C75C007FF48B /* StitchCountView.m */,
 				E608637F18DA5AA500515688 /* Main.storyboard */,
 				E608638218DA5AA500515688 /* ViewController.h */,
@@ -270,8 +280,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				E608638418DA5AA500515688 /* ViewController.m in Sources */,
+				E6EBD87A1975A8AF007FF48B /* TPKeyboardAvoidingScrollView.m in Sources */,
 				E668641D1936B3D6005E7583 /* CounterBrain.m in Sources */,
 				E6EBD8731971C75C007FF48B /* DetailView.m in Sources */,
+				E6EBD87D1975A957007FF48B /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */,
 				E608637E18DA5AA500515688 /* AppDelegate.m in Sources */,
 				E608637A18DA5AA500515688 /* main.m in Sources */,
 				E6EBD8741971C75C007FF48B /* StitchCountView.m in Sources */,

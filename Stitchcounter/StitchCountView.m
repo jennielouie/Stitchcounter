@@ -22,6 +22,15 @@
 @implementation StitchCountView
 
 
+- (id)initWithFrame:(CGRect)frame
+{
+    self = [super initWithFrame:frame];
+    if (self) {
+        self.wasDecremented = NO;
+    }
+    return self;
+}
+
 -(NSMutableArray *)attaGirls
 {
     _attaGirls = [[NSMutableArray alloc] initWithObjects:@"Keep going!", @"You rock!", @"You're doing great!", @"One step closer!", @"Awesome!", @"You're getting there!", @"Nice job!", nil];
@@ -39,14 +48,7 @@
     return specificAttaGirl;
 }
 
-- (id)initWithFrame:(CGRect)frame
-{
-    self = [super initWithFrame:frame];
-    if (self) {
-        self.wasDecremented = NO;
-    }
-    return self;
-}
+
 
 /*
 // Only override drawRect: if you perform custom drawing.

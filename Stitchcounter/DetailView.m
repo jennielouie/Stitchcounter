@@ -14,6 +14,9 @@
 
 @end
 
+
+
+
 @implementation DetailView
 
 - (id)initWithFrame:(CGRect)frame
@@ -37,7 +40,7 @@
     
     [self addSubview:self.total];
     
-    [self.total addTarget:self action:@selector(totalWasEdited) forControlEvents:UIControlEventEditingDidEndOnExit];
+    [self.total addTarget:self action:@selector(totalWasEdited) forControlEvents:UIControlEventEditingDidEnd];
     
     [self addConstraint:[NSLayoutConstraint constraintWithItem:self.total
                                                      attribute:NSLayoutAttributeLeading
@@ -71,6 +74,21 @@
                                                      multiplier:0.4
                                                        constant:0]];
     
+    UIToolbar* keyboardDoneButtonView = [[UIToolbar alloc] init];
+    [keyboardDoneButtonView sizeToFit];
+    UIBarButtonItem* doneButton = [[UIBarButtonItem alloc] initWithTitle:@"Done"
+                                                                   style:UIBarButtonItemStyleDone
+                                                                  target:self
+                                                                  action:@selector(doneClicked:)];
+    UIBarButtonItem *flex1 = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:self action:nil] ;
+    
+    UIBarButtonItem *flex2 = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:self action:nil] ;
+    
+    [keyboardDoneButtonView setItems:[NSArray arrayWithObjects:flex1, flex2, doneButton, nil]];
+    self.total.inputAccessoryView = keyboardDoneButtonView;
+    
+    
+    
     self.completed = [[UITextField alloc] init];
     self.completed.translatesAutoresizingMaskIntoConstraints = NO;
     self.completed.text = @"Done: 0";
@@ -80,7 +98,7 @@
     self.completed.textAlignment = NSTextAlignmentLeft;
     
     [self addSubview:self.completed];
-     [self.completed addTarget:self action:@selector(completedWasEdited) forControlEvents:UIControlEventEditingDidEndOnExit];
+     [self.completed addTarget:self action:@selector(completedWasEdited) forControlEvents:UIControlEventEditingDidEnd];
     
     [self addConstraint:[NSLayoutConstraint constraintWithItem:self.completed
                                                      attribute:NSLayoutAttributeLeading
@@ -114,6 +132,29 @@
                                                      multiplier:0.4
                                                        constant:0]];
     
+    UIToolbar* keyboardDoneButtonView2 = [[UIToolbar alloc] init];
+    [keyboardDoneButtonView2 sizeToFit];
+    UIBarButtonItem* doneButton2 = [[UIBarButtonItem alloc] initWithTitle:@"Done"
+                                                                   style:UIBarButtonItemStyleDone
+                                                                  target:self
+                                                                  action:@selector(doneClicked2:)];
+    
+    [keyboardDoneButtonView2 setItems:[NSArray arrayWithObjects:flex1, flex2, doneButton2, nil]];
+    self.completed.inputAccessoryView = keyboardDoneButtonView2;
+    
+}
+
+
+- (void)doneClicked:(id)sender
+{
+    NSLog(@"Done Clicked.");
+    [self.total endEditing:YES];
+}
+
+- (void)doneClicked2:(id)sender
+{
+    NSLog(@"Done Clicked.");
+    [self.completed endEditing:YES];
 }
 
 -(void)totalWasEdited
