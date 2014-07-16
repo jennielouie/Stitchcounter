@@ -27,6 +27,7 @@
 		E6EBD8771971C767007FF48B /* Prog2ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E6EBD8761971C767007FF48B /* Prog2ViewController.m */; };
 		E6EBD87A1975A8AF007FF48B /* TPKeyboardAvoidingScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = E6EBD8791975A8AF007FF48B /* TPKeyboardAvoidingScrollView.m */; };
 		E6EBD87D1975A957007FF48B /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = E6EBD87C1975A957007FF48B /* UIScrollView+TPKeyboardAvoidingAdditions.m */; };
+		E6EBD8801975D0F7007FF48B /* SCTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E6EBD87F1975D0F7007FF48B /* SCTableViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +72,8 @@
 		E6EBD8791975A8AF007FF48B /* TPKeyboardAvoidingScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPKeyboardAvoidingScrollView.m; sourceTree = "<group>"; };
 		E6EBD87B1975A957007FF48B /* UIScrollView+TPKeyboardAvoidingAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+TPKeyboardAvoidingAdditions.h"; sourceTree = "<group>"; };
 		E6EBD87C1975A957007FF48B /* UIScrollView+TPKeyboardAvoidingAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+TPKeyboardAvoidingAdditions.m"; sourceTree = "<group>"; };
+		E6EBD87E1975D0F7007FF48B /* SCTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCTableViewController.h; sourceTree = "<group>"; };
+		E6EBD87F1975D0F7007FF48B /* SCTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCTableViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,6 +144,8 @@
 				E6EBD8791975A8AF007FF48B /* TPKeyboardAvoidingScrollView.m */,
 				E6EBD8721971C75C007FF48B /* StitchCountView.m */,
 				E608637F18DA5AA500515688 /* Main.storyboard */,
+				E6EBD87E1975D0F7007FF48B /* SCTableViewController.h */,
+				E6EBD87F1975D0F7007FF48B /* SCTableViewController.m */,
 				E608638218DA5AA500515688 /* ViewController.h */,
 				E608638318DA5AA500515688 /* ViewController.m */,
 				E668641E1936B3E3005E7583 /* CounterBrain.h */,
@@ -288,6 +293,7 @@
 				E608637A18DA5AA500515688 /* main.m in Sources */,
 				E6EBD8741971C75C007FF48B /* StitchCountView.m in Sources */,
 				E6EBD8771971C767007FF48B /* Prog2ViewController.m in Sources */,
+				E6EBD8801975D0F7007FF48B /* SCTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -416,8 +422,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Stitchcounter/Stitchcounter-Prefix.pch";
 				INFOPLIST_FILE = "Stitchcounter/Stitchcounter-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -431,8 +438,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Stitchcounter/Stitchcounter-Prefix.pch";
 				INFOPLIST_FILE = "Stitchcounter/Stitchcounter-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
